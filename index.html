@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Natal</title>
+    <style>
+        /* Gaya untuk Body */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('wp lcd.jpg') no-repeat center center fixed;
+            background-size: cover;
+            overflow-x: hidden; /* Untuk menghindari scroll horizontal */
+            height: 100vh; /* Pastikan tinggi body mencakup layar penuh */
+        }
+
+        /* Animasi Salju */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            pointer-events: none;
+            color: #ffffff;
+            font-size: 1.5em;
+            z-index: 9999;
+            user-select: none;
+            animation: fall 10s linear infinite;
+        }
+
+        /* Efek Salju Jatuh */
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Gaya untuk Kontainer Utama */
+        .container {
+            padding: 50px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px; /* Lebih lebar untuk teks panjang */
+            margin: auto;
+            margin-top: 150px;
+            text-align: center;
+            max-height: 90vh; /* Membatasi tinggi kontainer utama agar tidak menutupi seluruh layar */
+            overflow-y: auto; /* Agar konten di dalamnya bisa di-scroll */
+        }
+
+        h1 {
+            color: #ff4500;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            width: 80%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #ff4500;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e03e00;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+            white-space: normal; /* Pastikan teks bisa terpecah menjadi beberapa baris */
+            word-wrap: break-word; /* Memungkinkan teks panjang terpotong jika perlu */
+            max-width: 100%;
+            line-height: 1.6;
+        }
+
+        /* Gaya untuk nama yang ditampilkan */
+        .bold-red {
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Salju Animasi -->
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❄</div>
+    </div>
+
+    <div class="container">
+        <h1>Beni & Arum Mengucapkan</h1>
+        <h1>Selamat Natal!</h1>
+        <p>Masukkan nama Anda untuk mendapatkan ucapan Natal spesial!</p>
+        
+        <!-- Form Input Nama -->
+        <input type="text" id="name" placeholder="Nama Anda" required>
+        <br>
+        <button onclick="showMessage()">Tampilkan Ucapan Natal Dari Kami</button>
+
+        <!-- Tempat Menampilkan Pesan -->
+        <div class="message" id="greetingMessage"></div>
+    </div>
+
+    <script>
+        function showMessage() {
+            var name = document.getElementById('name').value;
+            if (name.trim() !== "") {
+                document.getElementById('greetingMessage').innerHTML = 
+                    "Selamat Natal, <span class='bold-red'>" + name + "</span>! Di hari yang penuh berkah ini, saya ingin mengucapkan Selamat Natal dan semoga kedamaian, kebahagiaan, dan kasih sayang Natal selalu menyertai Anda. Semoga cinta kasih yang terpancar dari perayaan ini membawa kedamaian bagi dunia dan menjadi pengingat bagi kita semua tentang pentingnya cinta, toleransi, dan kasih sayang antar sesama.<br><br>" +
+                    "Meskipun kita berbeda agama, kita semua adalah saudara dalam kemanusiaan. Semoga semangat persaudaraan dan kedamaian tetap tumbuh di antara kita, baik di hari Natal maupun setiap hari dalam kehidupan kita.";
+            } else {
+                document.getElementById('greetingMessage').innerHTML = 
+                    "Tolong masukkan nama Anda terlebih dahulu!";
+            }
+        }
+    </script>
+
+</body>
+</html>
